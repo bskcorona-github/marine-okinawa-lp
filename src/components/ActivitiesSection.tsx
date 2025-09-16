@@ -3,7 +3,7 @@
 import Reveal from './Reveal';
 import ActivityModal from './ActivityModal';
 import { useState } from 'react';
-import type { Activity } from '@/data/activities';
+import type { Activity } from '../data/activities';
 
 function NoImageCard() {
   return (
