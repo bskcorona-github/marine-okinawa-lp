@@ -1,6 +1,12 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import HeaderNav from '../components/HeaderNav';
+import dynamic from 'next/dynamic';
+const HeroCarousel = dynamic(() => import('../components/HeroCarousel'), { ssr: false });
+const Concept = dynamic(() => import('../components/Concept'));
+const GalleryMasonry = dynamic(() => import('../components/GalleryMasonry'));
+const StaffSection = dynamic(() => import('../components/StaffSection'));
+const AccessMap = dynamic(() => import('../components/AccessMap'));
 import BookingForm from '../components/BookingForm';
 import AnimatedHeading from '../components/AnimatedHeading';
 import Reveal from '../components/Reveal';
@@ -15,13 +21,9 @@ export const metadata: Metadata = {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-okinawa-sky-sea pt-14">
+    <section id="hero" className="relative h-screen flex items-center justify-center pt-14">
       <div className="absolute inset-0 overflow-hidden">
-        <picture>
-          <source media="(max-width: 640px)" srcSet="/images/hero-640.webp" />
-          <source media="(min-width: 641px)" srcSet="/images/hero.webp" />
-          <img src="/images/hero.webp" alt="沖縄の海の静止画" className="w-full h-full object-cover object-[calc(50%+150px)_center] sm:object-center" loading="eager" />
-        </picture>
+        <HeroCarousel images={["/images/hero.webp"]} />
       </div>
       <div className="absolute inset-0 hero-overlay" />
       <div className="relative z-10 container-pad text-center text-white">
@@ -221,7 +223,7 @@ function AboutSection() {
       </Reveal>
       <div className="mt-6 grid gap-4 text-deepsea/90">
         <p><span className="font-semibold text-deepsea">屋号</span>: 沖縄 海遊び</p>
-        <p><span className="font-semibold text-deepsea">所在地</span>: 沖縄県〇〇市〇〇 1-2-3</p>
+        <p><span className="font-semibold text-deepsea">所在地</span>: 沖縄県宜野湾市 真志喜4丁目 宜野湾マリーナ</p>
         <p><span className="font-semibold text-deepsea">電話</span>: 098-000-0000</p>
         <p><span className="font-semibold text-deepsea">営業時間</span>: 8:00–18:00（不定休・天候により変動）</p>
         <p><span className="font-semibold text-deepsea">許認可</span>: マリンレジャー保険加入 / 事業者登録番号: 000000</p>
@@ -267,9 +269,13 @@ export default function Page() {
       <HeaderNav />
       <Hero />
       <Features />
+      <Concept />
       <PriceTable />
+      <GalleryMasonry images={[]} />
       <Activities />
       <Booking />
+      <StaffSection />
+      <AccessMap />
       <AboutSection />
       <FAQSection />
       <Footer />

@@ -1,30 +1,43 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function HeaderNav() {
   const [open, setOpen] = useState(false);
+  const [overHero, setOverHero] = useState(true);
   // aria + escape close
   const close = () => setOpen(false);
   if (typeof window !== 'undefined') {
     document.body.style.overflow = open ? 'hidden' : '';
   }
+  useEffect(() => {
+    const hero = document.getElementById('hero');
+    if (!hero) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setOverHero(entry.isIntersecting),
+      { root: null, rootMargin: '-56px 0px 0px 0px', threshold: 0 }
+    );
+    io.observe(hero);
+    return () => io.disconnect();
+  }, []);
   return (
-    <header className="fixed top-0 inset-x-0 z-30 bg-white/70 backdrop-blur border-b border-white/50">
+    <header className={`fixed top-0 inset-x-0 z-30 transition-colors ${
+      overHero ? 'bg-transparent border-transparent' : 'bg-white/70 backdrop-blur border-b border-white/50'
+    }`}>
       <div className="container-pad h-14 flex items-center justify-between">
-        <a href="#" aria-label="トップへ" className="font-heading text-deepsea text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded">
+        <a href="#" aria-label="トップへ" className={`font-heading text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded ${overHero ? 'text-white' : 'text-deepsea'}`}>
           沖縄 海遊び
         </a>
         {/* Desktop nav */}
-        <nav className="hidden sm:flex items-center gap-5 text-deepsea/90">
-          <a href="#activities" className="hover:text-deepsea">アクティビティ</a>
-          <a href="#booking" className="hover:text-deepsea">予約</a>
-          <a href="#about" className="hover:text-deepsea">事業者情報</a>
-          <a href="#faq" className="hover:text-deepsea">FAQ</a>
-          <a href="#sns" className="hover:text-deepsea">SNS</a>
+        <nav className={`hidden sm:flex items-center gap-5 ${overHero ? 'text-white/90' : 'text-deepsea/90'}`}>
+          <a href="#activities" className={overHero ? 'hover:text-white' : 'hover:text-deepsea'}>アクティビティ</a>
+          <a href="#booking" className={overHero ? 'hover:text-white' : 'hover:text-deepsea'}>予約</a>
+          <a href="#about" className={overHero ? 'hover:text-white' : 'hover:text-deepsea'}>事業者情報</a>
+          <a href="#faq" className={overHero ? 'hover:text-white' : 'hover:text-deepsea'}>FAQ</a>
+          <a href="#sns" className={overHero ? 'hover:text-white' : 'hover:text-deepsea'}>SNS</a>
         </nav>
         {/* Mobile burger */}
-        <button aria-label="メニュー" aria-expanded={open} aria-controls="mobile-drawer" className="sm:hidden text-deepsea/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded" onClick={() => setOpen(true)}>
+        <button aria-label="メニュー" aria-expanded={open} aria-controls="mobile-drawer" className={`sm:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded ${overHero ? 'text-white/90' : 'text-deepsea/90'}`} onClick={() => setOpen(true)}>
           ☰
         </button>
       </div>
