@@ -48,11 +48,11 @@ export default function HeaderNav() {
           <div className="absolute inset-0 bg-transparent" onClick={() => setOpen(false)} />
           <nav id="mobile-drawer" className="absolute top-0 right-0 h-full w-64 bg-transparent backdrop-blur-0 shadow-none p-6 flex flex-col gap-4">
             <button aria-label="閉じる" className="self-end text-deepsea/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded" onClick={close}>✕</button>
-            <a href="#activities" onClick={close} className="text-deepsea focus:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded">アクティビティ</a>
-            <a href="#booking" onClick={close} className="text-deepsea focus:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded">予約</a>
-            <a href="#about" onClick={close} className="text-deepsea focus:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded">事業者情報</a>
-            <a href="#faq" onClick={close} className="text-deepsea focus:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded">FAQ</a>
-            <a href="#sns" onClick={close} className="text-deepsea focus:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded">SNS</a>
+            <a href="#activities" onClick={close} className="text-deepsea/90 rounded-xl px-4 py-3 bg-white/60 backdrop-blur ring-1 ring-white/60 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-coral hover:bg-white/70 hover:shadow-lg transition">アクティビティ</a>
+            <a href="#booking" onClick={close} className="text-deepsea/90 rounded-xl px-4 py-3 bg-white/60 backdrop-blur ring-1 ring-white/60 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-coral hover:bg-white/70 hover:shadow-lg transition">予約</a>
+            <a href="#about" onClick={close} className="text-deepsea/90 rounded-xl px-4 py-3 bg-white/60 backdrop-blur ring-1 ring-white/60 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-coral hover:bg-white/70 hover:shadow-lg transition">事業者情報</a>
+            <a href="#faq" onClick={close} className="text-deepsea/90 rounded-xl px-4 py-3 bg-white/60 backdrop-blur ring-1 ring-white/60 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-coral hover:bg-white/70 hover:shadow-lg transition">FAQ</a>
+            <a href="#sns" onClick={close} className="text-deepsea/90 rounded-xl px-4 py-3 bg-white/60 backdrop-blur ring-1 ring-white/60 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-coral hover:bg-white/70 hover:shadow-lg transition">SNS</a>
           </nav>
         </div>
       )}
