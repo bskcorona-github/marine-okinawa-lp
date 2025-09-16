@@ -10,7 +10,7 @@ export default function HeroCarousel({ images }: { images: string[] }) {
       <div className="flex h-full snap-x snap-mandatory overflow-x-auto scroll-smooth">
         {images.map((src, i) => (
           <div key={i} className="relative shrink-0 w-full h-full snap-center">
-            <ComingSoonImage src={src} alt={`ヒーロー${i + 1}`} className="w-full h-full object-cover" />
+            <ComingSoonImage src={src} alt={`ヒーロー${i + 1}`} className="w-full h-full object-cover object-[calc(50%+150px)_center] sm:object-center" />
           </div>
         ))}
       </div>
