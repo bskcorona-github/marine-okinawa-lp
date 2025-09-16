@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --container-max: 1200px;
+}
+
+html, body { height: 100%; }
+html { scroll-behavior: smooth; }
+
+.font-heading { font-family: var(--font-yusei), system-ui, sans-serif; }
+
+.container-pad {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(10,37,64,0.28) 0%, rgba(10,37,64,0.08) 40%, rgba(10,37,64,0.28) 100%);
+}
+
+
+
+@keyframes charIn {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-charIn { animation: charIn .10s var(--char-ease, cubic-bezier(0.22,1,0.36,1)) forwards; }
+
+/* slow text fade-in for hero subcopy and buttons */
+@keyframes textanime {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.text-slow-fade { animation: textanime 5s ease-in-out forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-charIn { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .text-slow-fade { animation: none !important; opacity: 1 !important; }
+}
+
+
